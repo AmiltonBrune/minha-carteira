@@ -15,6 +15,7 @@ import listOfMonths from '../../utils/months';
 import happyImg from '../../assets/happy.svg';
 import sadImg from '../../assets/sad.svg';
 import grinningImg from '../../assets/grinning.svg';
+import opsImg from '../../assets/ops.svg';
 
 import { Container, Content } from './styles';
 
@@ -108,12 +109,20 @@ const Dashboard: React.FC = () => {
           'Verifique seus gastos e tente cortar algumas coisas desnecessárias',
         icon: sadImg,
       };
+    } else if (totalGains === 0 && totalExpenses === 0) {
+      return {
+        title: 'Ops!',
+        description: 'Neste mês, não há registros de entradas ou saídas.',
+        footerText:
+          'Parece que você não fez nenhum registgro no mês e ano selecionados.',
+        icon: opsImg,
+      };
     } else if (totalBalance === 0) {
       return {
         title: 'Uffa!',
         description:
-          'Neste mês, você gastou você gastou exatamente o que ganhou.',
-        footerText: 'Tenha cuidado. No próximo teste poupar o seu dinheiro',
+          'Neste mês, você gastou exatamente o que ganhou.',
+        footerText: 'Tenha cuidado. No próximo tente poupar o seu dinheiro',
         icon: grinningImg,
       };
     } else {
@@ -124,25 +133,25 @@ const Dashboard: React.FC = () => {
         icon: happyImg,
       };
     }
-  }, [totalBalance]);
+  }, [totalBalance, totalExpenses, totalGains]);
 
   const relationExpensesVersusGains = useMemo(() => {
     const total = totalGains + totalExpenses;
 
-    const percentGains = (totalGains / total) * 100;
-    const percentExpenses = (totalExpenses / total) * 100;
+    const percentGains = Number(((totalGains / total) * 100).toFixed(1));
+    const percentExpenses = Number(((totalExpenses / total) * 100).toFixed(1));
 
     const data = [
       {
         name: 'Entradas',
         value: totalGains,
-        percent: Number(percentGains.toFixed(1)),
+        percent: percentGains ? percentGains : 0,
         color: '#f7931b',
       },
       {
         name: 'Saídas',
         value: totalExpenses,
-        percent: Number(percentExpenses.toFixed(1)),
+        percent: percentExpenses ? percentExpenses : 0,
         color: '#e44c4e',
       },
     ];
@@ -229,17 +238,22 @@ const Dashboard: React.FC = () => {
 
     const total = amoutRecurrent + amoutEventual;
 
+    const percentRecurrent = Number(
+      ((amoutRecurrent / total) * 100).toFixed(1)
+    );
+    const percentEventual = Number(((amoutEventual / total) * 100).toFixed(1));
+
     return [
       {
         name: 'Recorrentes',
         amount: amoutRecurrent,
-        percent: Number(((amoutEventual / total) * 100).toFixed(1)),
+        percent: percentRecurrent ? percentRecurrent : 0,
         color: '#f7931b',
       },
       {
         name: 'Eventual',
         amount: amoutEventual,
-        percent: Number(((amoutEventual / total) * 100).toFixed(1)),
+        percent: percentEventual ? percentEventual : 0,
         color: '#e44c4e',
       },
     ];
@@ -269,17 +283,22 @@ const Dashboard: React.FC = () => {
 
     const total = amoutRecurrent + amoutEventual;
 
+    const percentRecurrent = Number(
+      ((amoutRecurrent / total) * 100).toFixed(1)
+    );
+    const percentEventual = Number(((amoutEventual / total) * 100).toFixed(1));
+
     return [
       {
         name: 'Recorrentes',
         amount: amoutRecurrent,
-        percent: Number(((amoutEventual / total) * 100).toFixed(1)),
+        percent: percentRecurrent ? percentRecurrent : 0,
         color: '#f7931b',
       },
       {
         name: 'Eventual',
         amount: amoutEventual,
-        percent: Number(((amoutEventual / total) * 100).toFixed(1)),
+        percent: percentEventual ? percentEventual : 0,
         color: '#e44c4e',
       },
     ];
