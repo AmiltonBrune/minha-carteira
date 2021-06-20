@@ -53,10 +53,10 @@ const ThemeProvider: React.FC = ({ children }) => {
   );
 };
 
-function useTheme(): IThemeContext {
+const useTheme = (): IThemeContext => {
   const context = useContext(ThemeContext);
 
   return context;
-}
+};
 
 export { ThemeProvider, useTheme };
