@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-
 interface ILegendProps {
   color: string;
 }
