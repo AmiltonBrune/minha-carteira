@@ -96,7 +96,7 @@ export const Legend = styled.li<ILegendProps>`
     margin-left: 5px;
   }
 
-  @media (max-width: 1345px) {
+  /* @media (max-width: 1345px) {
     font-size: 14px;
     margin: 3px 0;
 
@@ -109,7 +109,7 @@ export const Legend = styled.li<ILegendProps>`
     > span {
       margin-left: 7px;
     }
-  }
+  } */
 `;
 
 export const SideRight = styled.main`
