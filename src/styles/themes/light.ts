@@ -6,7 +6,7 @@ const light = {
     secondary: '#ffffff',
     tertiary: '#f5f5f5',
 
-    white: '#000',
+    white: '#222',
     black: '#fff',
     gray: '#bfbfbf',
 

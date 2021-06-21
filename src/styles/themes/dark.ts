@@ -7,7 +7,7 @@ const dark = {
     tertiary: '#313862',
 
     white: '#fff',
-    black: '#000',
+    black: '#222',
     gray: '#bfbfbf',
 
     success: '#4e41f0',
