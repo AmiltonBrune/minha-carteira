@@ -6,14 +6,12 @@ import MainHeader from '../MainHeader';
 
 import { Grid } from './styles';
 
-const Layout: React.FC = ({ children }) => {
-  return (
-    <Grid>
-      <MainHeader />
-      <Aside />
-      <Content>{children}</Content>
-    </Grid>
-  );
-};
+const Layout: React.FC = ({ children }) => (
+  <Grid>
+    <MainHeader />
+    <Aside />
+    <Content>{children}</Content>
+  </Grid>
+);
 
 export default Layout;
